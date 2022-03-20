@@ -1,0 +1,7 @@
+FROM myjavabase
+RUN yum install git -y \
+	&& git clone https://github.com/vamsi1184/myweb.git \
+	&& cd myweb \
+	&& mvn clean install \
+	&& cp ./target/*.war /opt/tomcat/webapps/
+CMD ["/opt/tomcat/bin/catalina.sh","run"]
